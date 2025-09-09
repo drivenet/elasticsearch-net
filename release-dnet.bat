@@ -1,0 +1,1 @@
+dotnet pack -c Release src/Elastic.Clients.Elasticsearch -o build/output /p:CurrentVersion=8.19.5.1 /p:PackageId=Dnet.Elastic.Clients.Elasticsearch
