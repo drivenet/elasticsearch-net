@@ -17,7 +17,11 @@ internal sealed class DoubleWithFractionalPortionConverter :
 	// https://github.com/dotnet/runtime/blob/main/src/libraries/System.Text.Json/src/System/Text/Json/JsonConstants.cs#L78
 	public const int MaximumFormatLength = 128 + 2;
 
+#if NETSTANDARD2_1_OR_GREATER
 	private static readonly StandardFormat DefaultFormat = StandardFormat.Parse("G17");
+#else
+	private static readonly StandardFormat DefaultFormat = StandardFormat.Parse("G");
+#endif
 	private static readonly JsonEncodedText NaN = JsonEncodedText.Encode("NaN"u8);
 	private static readonly JsonEncodedText PositiveInfinity = JsonEncodedText.Encode("Infinity"u8);
 	private static readonly JsonEncodedText NegativeInfinity = JsonEncodedText.Encode("-Infinity"u8);
